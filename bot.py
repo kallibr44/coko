@@ -1,22 +1,41 @@
 import requests
-import json
 import time
-access_token='Токен авторизации вк'
+import os, sys
+
+access_token = '961d5074c23cd79fccac08e2d8f2b28f599b8b148d303733801785bdadbd176e0fe6de6181102a3be00c1'
+
 
 def hello():
- send_message("Я включился!")
+    send_message("Я включился!")
 
-'''
-в функции send_message в конце строки изменяется получатель:
-domain=kallibr44 (короткая ссылка профиля вк (vk.com/kallibr44))
-chat_id=16 (отправлять сообщения в беседу. (https://vk.com/im?sel=c16 берем без 'с' ))
-user_id=137468903 (обычный id вконтакет пользователя, если нету сокращенной ссылки)
-'''
 
 def send_message(text):
- req = requests.get('https://api.vk.com/method/messages.send?v=5.52&access_token=%s&message=%s&domain=kallibr44' % (access_token,text))
- time.sleep(2)
- print (req.text)
-'''
-В консоль будет выведен JSON ответ
-'''
+    req = requests.get(
+        'https://api.vk.com/method/messages.send?v=5.52&access_token=%s&message=%s&chat_id=1' % (access_token, text))
+    req1 = requests.get(
+        'https://api.vk.com/method/messages.send?v=5.52&access_token=%s&message=%s&user_id=168331752' % (
+        access_token, text))
+    re2 = requests.get('https://api.vk.com/method/messages.send?v=5.52&access_token=%s&message=%s&user_id=189931403' % (
+    access_token, text))
+    re3 = requests.get('https://api.vk.com/method/messages.send?v=5.52&access_token=%s&message=%s&user_id=441239018' % (
+        access_token, text))
+    re4 = requests.get('https://api.vk.com/method/messages.send?v=5.52&access_token=%s&message=%s&user_id=142703152' % (
+        access_token, text))
+    re5 = requests.get('https://api.vk.com/method/messages.send?v=5.52&access_token=%s&message=%s&user_id=67610974' % (
+        access_token, text))
+    time.sleep(2)
+    print ("Сообщение отправлено в беседу успешно!" + req.text)
+    print ("Сообщение Александра Серова отправлено успешно!" + req1.text)
+    print ("Сообщение Вова Солодилов отправлено успешно!" + re2.text)
+    print ("Сообщение Darya Evgenyevna отправлено успешно!" + re3.text)
+    print ("Сообщение Павел Куприенко отправлено успешно!" + re4.text)
+    print ("Сообщение Оксана Повалева отправлено успешно!" + re5.text)
+
+
+def timer():
+ i = 3600
+ while i > 0:
+   print("Time remaining before next check: " + str(i) + "sec.")
+   os.system("clear")
+   i = i-1
+   time.sleep(1)
