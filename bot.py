@@ -2,7 +2,7 @@ import requests
 import time
 import os, sys
 
-access_token = '961d5074c23cd79fccac08e2d8f2b28f599b8b148d303733801785bdadbd176e0fe6de6181102a3be00c1'
+access_token = ''
 
 
 def hello():
